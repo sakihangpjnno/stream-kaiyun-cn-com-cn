@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开云 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(145deg, #fcedd9 0%, #f7d9b0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem 3rem;
+            line-height: 1.6;
+            color: #2e2416;
+        }
+
+        .page-wrap {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 主视觉卡片 */
+        .hero-card {
+            background: #fffbf3;
+            border-radius: 2.5rem;
+            padding: 2.8rem 2.5rem;
+            box-shadow: 0 20px 40px -12px rgba(120, 70, 30, 0.25);
+            margin-bottom: 2.5rem;
+            transition: box-shadow 0.2s;
+            text-align: center;
+        }
+
+        .hero-card h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            background: linear-gradient(130deg, #b3783a, #8b5a2b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-card .sub {
+            font-size: 1.1rem;
+            color: #6d4f2c;
+            opacity: 0.8;
+            border-top: 1px solid #efdcc0;
+            padding-top: 1rem;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .hero-card p {
+            font-size: 1.05rem;
+            max-width: 680px;
+            margin: 1.2rem auto 0;
+            color: #3f321f;
+        }
+
+        /* 信息网格：用途卡片 + 人群卡片 横向组合 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: #fffbf3;
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 12px 28px -8px rgba(90, 60, 30, 0.18);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 32px -12px rgba(100, 65, 25, 0.25);
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #7c582e;
+            margin-bottom: 1.2rem;
+            border-left: 5px solid #dba56d;
+            padding-left: 0.9rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.6rem;
+            position: relative;
+            color: #3d301e;
+        }
+
+        .card li::before {
+            content: "·";
+            position: absolute;
+            left: 0.2rem;
+            color: #be8b4f;
+            font-weight: 700;
+            font-size: 1.6rem;
+            line-height: 1;
+        }
+
+        .tag-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        .tag {
+            background: #f2e1ca;
+            color: #4c3822;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            display: inline-block;
+            letter-spacing: 0.01em;
+        }
+
+        /* 自然链接段落卡片 */
+        .link-card {
+            background: #fffbf3;
+            border-radius: 2rem;
+            padding: 2rem 2rem 2.2rem;
+            box-shadow: 0 12px 28px -8px rgba(90, 60, 30, 0.18);
+            margin-bottom: 2.5rem;
+        }
+
+        .link-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #7c582e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .link-card p {
+            color: #3f321f;
+            margin-bottom: 0.9rem;
+        }
+
+        .link-card a {
+            color: #8b5a2b;
+            background: #f4e3d0;
+            padding: 0.1rem 0.8rem 0.15rem 0.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s, color 0.2s;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+
+        .link-card a:hover {
+            background: #dba56d;
+            color: #2d1f0f;
+            border-color: #c08b4e;
+        }
+
+        .faq-mini {
+            background: #fcf5ea;
+            border-radius: 1.8rem;
+            padding: 1.6rem 1.8rem;
+            margin-top: 2rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 600;
+            color: #5d421f;
+            cursor: pointer;
+            padding: 0.3rem 0;
+            font-size: 1rem;
+        }
+
+        .faq-mini p {
+            margin-top: 0.7rem;
+            color: #423520;
+            font-size: 0.95rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #5a4530;
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-top: 1.2rem;
+            border-top: 1px solid #e4cfb6;
+            padding-top: 1.8rem;
+        }
+
+        @media (max-width: 700px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-card h1 {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 1.8rem 1.4rem;
+            }
+
+            .link-card {
+                padding: 1.8rem 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <!-- 主视觉 -->
+    <div class="hero-card">
+        <h1>开云 · 生活化信息站</h1>
+        <span class="sub">坦诚 · 实用 · 有温度</span>
+        <p>这里是关于 <strong>开云</strong> 的一份简明介绍页，通过几个卡片帮你快速了解站点的定位、内容方向以及适合哪些人。我们更愿意用朴素的语气，分享真实可靠的信息。</p>
+    </div>
+
+    <!-- 用途卡片 + 适合人群 两栏 -->
+    <div class="grid-2col">
+        <!-- 用途卡片 -->
+        <div class="card">
+            <h2>📋 站点用途</h2>
+            <ul>
+                <li>聚合日常实用信息，减少信息过载</li>
+                <li>提供生活向工具入口与内容索引</li>
+                <li>关注可操作性，不堆砌复杂术语</li>
+                <li>保持内容更新，注重来源的可溯性</li>
+                <li>界面友好，尽量降低使用门槛</li>
+            </ul>
+            <div class="tag-list">
+                <span class="tag">信息聚合</span>
+                <span class="tag">实用索引</span>
+                <span class="tag">轻量工具</span>
+            </div>
+        </div>
+
+        <!-- 适合人群 -->
+        <div class="card">
+            <h2>👥 适合人群</h2>
+            <ul>
+                <li>希望快速找到靠谱信息的朋友</li>
+                <li>对互联网内容有甄别需求的日常用户</li>
+                <li>喜欢简洁、友好页面体验的人</li>
+                <li>偶尔需要生活场景指引的浏览者</li>
+                <li>对站点背后信息可信度有要求的读者</li>
+            </ul>
+            <div class="tag-list">
+                <span class="tag">普通网民</span>
+                <span class="tag">效率偏好</span>
+                <span class="tag">信息筛选</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自然链接段落 + 可信说明 -->
+    <div class="link-card">
+        <h3>🔗 关于开云 · 可信方向</h3>
+        <p>我们始终认为，一个网站最珍贵的是坦诚。所以在这个页面里，我们不会刻意诱导点击，也不会夸大某些功能。当你需要了解更具体的内容时，可以直接前往 <a href="https://stream-kaiyun-cn.com.cn">开云</a> 浏览。那里有相对完整的资料和日常更新。</p>
+        <p>站点在信息筛选上偏向生活化与实用性，每个推荐或整理都尽量标注依据或来源。如果你在寻找一个不打扰、不浮夸的信息落脚点，或许这里值得你看一看。</p>
+        <p>另外，我们也留意到部分同类站点充斥着模糊描述或强制跳转，而 <a href="https://stream-kaiyun-cn.com.cn">开云</a> 在交互上尽量克制，把选择权交给浏览者。你可以自由翻阅，没有弹窗压力。</p>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-mini">
+            <details>
+                <summary>🤔 常见疑问摘要</summary>
+                <p><strong>Q：网站内容多久更新一次？</strong><br>根据可用信息与来源变化不定期更新，但会保持内容时效性检查。</p>
+                <p><strong>Q：是否包含第三方广告？</strong><br>页面目前以信息展示为主，不包含弹窗或强制广告。</p>
+                <p><strong>Q：我如何反馈建议？</strong><br>你可以通过页面内相关链接或站点公开渠道联系，暂时没有设立独立留言区。</p>
+            </details>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        开云 · 不渲染焦虑 · 只呈现信息
+    </div>
+</div>
+</body>
+</html>

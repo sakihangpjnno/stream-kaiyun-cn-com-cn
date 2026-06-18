@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sakihangpjnno.github.io/stream-kaiyun-cn-com-cn/sitemap.xml
